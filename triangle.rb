@@ -15,12 +15,21 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
-  sides = [a,b,c]
-  if sides.uniq.count == 1
-    :equilateral
-  elsif sides.uniq.count == 2
-    :isosceles
-  else :scalene
+  sides = [a,b,c].sort
+
+
+
+  if sides.any? { |length| length <= 0 }
+    raise TriangleError, "All sides must be greater than 0"
+  elsif sides[0] + sides[1] <= sides[2]
+    raise TriangleError, "The sum of the smaller sides must be greater than the largest side"
+  else
+    if sides.uniq.count == 1
+      :equilateral
+    elsif sides.uniq.count == 2
+      :isosceles
+    else :scalene
+    end
   end
 end
 
