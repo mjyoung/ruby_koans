@@ -15,6 +15,13 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  sides = [a,b,c]
+  if sides.uniq.count == 1
+    :equilateral
+  elsif sides.uniq.count == 2
+    :isosceles
+  else :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
